@@ -7,6 +7,9 @@ sap.ui.core.routing.Router.extend("sap.ui.demo.logbook.MyRouter", {
 	constructor : function() {
 		sap.ui.core.routing.Router.apply(this, arguments);
 		this._oRouteMatchedHandler = new sap.m.routing.RouteMatchedHandler(this);
+		
+        //this is used to retrieve the instance again
+        this.register("appRouter");
 	},
 
 	myNavBack : function(sRoute, mData, bReplace) {
