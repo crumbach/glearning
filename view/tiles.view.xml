@@ -1,0 +1,26 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="sap.ui.demo.logbook.view.tiles" xmlns:html="http://www.w3.org/1999/xhtml">
+	<TileContainer xmlns="sap.m" id="tileContainer" width="100%"
+		height="100%" editable="false" allowAdd="false" tileMove="true"
+		tileDelete="false" tileAdd="true">
+		<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
+		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
+		<tiles>
+			<StandardTile xmlns="sap.m" id="tileTripOverview"
+				removable="false" title="Trips in 2014" info="Click to view the complete logbook"
+				icon="sap-icon://activity-items" activeIcon="" number="32"
+				numberUnit="Trips" infoState="None" type="None" iconDensityAware="true"
+				press="onPress">
+				<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
+				<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
+			</StandardTile>
+			<StandardTile xmlns="sap.m" id="tileLogTrip" removable="false"
+				title="Log new trip" info="Click to log a new trip" icon=""
+				activeIcon="" number="" numberUnit="" infoState="None" type="Create"
+				iconDensityAware="true" press="onPress">
+				<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
+				<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
+			</StandardTile>
+		</tiles> <!-- sap.ui.core.Control -->
+	</TileContainer>
+</core:View>

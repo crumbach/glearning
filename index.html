@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html><head>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge' />
+	<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+
+	<title>Driver's Logbook</title>
+
+	<script id='sap-ui-bootstrap' type='text/javascript'
+		src='https://sapui5.hana.ondemand.com/resources/sap-ui-core.js'
+		data-sap-ui-theme='sap_bluecrystal' 
+		data-sap-ui-libs='sap.m'
+		data-sap-ui-resourceroots='{"sap.ui.demo.logbook": "./"}'>
+    </script>
+
+        <script>
+ 			// sap.ui.localResources("sap.ui.demo.logbook");
+            
+            jQuery.sap.registerModulePath('sap.ui.demo.logbook', './'); 
+			
+			sap.ui.getCore().attachInit(function() {
+				new sap.m.Shell({
+					id: "logBookShell",
+					app: new sap.ui.core.ComponentContainer({
+						height : "100%",
+						name : "sap.ui.demo.logbook"
+					})
+				}).placeAt("content");
+			});
+
+            // sap.ui.getCore().attachInit(function() {
+            //     var oApp = new sap.m.App("logbookApp", {
+            //             initialPage:"tiles"
+            //         });
+            //     oApp.addPage(new sap.ui.view({id:"tiles", viewName:"ui5logbook.tiles", type:sap.ui.core.mvc.ViewType.XML}));
+            //     oApp.addPage(new sap.ui.view({id:"overview", viewName:"ui5logbook.overview", type:sap.ui.core.mvc.ViewType.XML}));
+
+            //     var oShell = new sap.m.Shell({
+            //         id:    "logbookShell",
+            //     	title: "Driver's logbook",
+            //     	showLogout: false
+            //     });
+            //     oShell.setApp(oApp);
+            //     oShell.placeAt("content");
+            // });
+        </script>
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>
