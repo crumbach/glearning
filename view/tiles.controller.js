@@ -1,8 +1,9 @@
 sap.ui.controller("sap.ui.demo.logbook.view.tiles", {
 
-    onPress : function(evt) {
-        var oApp = sap.ui.getCore().byId("logbookApp");
-        oApp.to("overview");
+    onPress : function() {
+//        sap.ui.core.routing.Router.getRouter("MyRouter").navTo("View2",{ from: "View 1"});
+        var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+        oRouter.navTo("splitApp");
     }
     
 /**
