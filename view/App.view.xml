@@ -1,0 +1,12 @@
+<mvc:View
+	controllerName="sap.ui.demo.logbook.view.App"
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true"
+	xmlns="sap.m">
+	<App id="logbookApp" >
+			<pages></pages> <!-- sap.ui.core.Control -->
+	  
+	  <!--<mvc:XMLView id="tiles" viewName="sap.ui.demo.logbook.view.tiles" />-->
+	  <!--<mvc:XMLView id="overview" viewName="sap.ui.demo.logbook.view.overview" />-->
+	</App>
+</mvc:View>
