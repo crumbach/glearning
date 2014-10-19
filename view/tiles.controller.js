@@ -3,7 +3,7 @@ sap.ui.controller("sap.ui.demo.logbook.view.tiles", {
     onPress : function() {
 //        sap.ui.core.routing.Router.getRouter("MyRouter").navTo("View2",{ from: "View 1"});
         var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-        oRouter.navTo("splitApp");
+        oRouter.navTo("splitApp", { from: "tiles" } );
     }
     
 /**

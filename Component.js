@@ -27,70 +27,26 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 				routerClass : sap.ui.demo.logbook.MyRouter,
 				viewType : "XML",
 				viewPath : "sap.ui.demo.logbook.view",
-				targetControl : "logbookApp",
+				targetControl : "logbookApp", 
 				targetAggregation : "pages",
 				clearTarget : false,
 				transition : "slide"
 			},
 			routes : [
 				{
-					pattern : "",
 					name : "tiles",
+					pattern : "",
 					view : "tiles",
 				    targetControl : "logbookApp",
-				    //targetAggregation : "pages",
+				    targetAggregation : "pages",
 				    clearTarget : true
-				// 	subroutes : [
-				// 		{
-				// 			pattern : "home",
-				// 			name : "HomeDetail",
-				// 			view : "HomeDetail"
-				// 		},
-				// 		{
-				// 			pattern : "services",
-				// 			name : "services",
-				// 			view : "ServiceList",
-				// 			subroutes : [
-				// 				{
-				// 					pattern : "services/{serviceId}/:serviceDetailTab:",
-				// 					name : "ServiceDetail",
-				// 					view : "ServiceDetail",
-				// 					subroutes : [
-				// 			        {
-				// 				    	 pattern : "services/{serviceId}/processes/{processId}/:processDetailTab:",
-				// 						 name : "ProcessDetail",
-				// 						 view : "ProcessDetail",
-				// 								subroutes : [
-				// 												{
-				// 													pattern : "services/{serviceId}/processes/{processId}/pos/{taskPos}",
-				// 													name : "TaskDetail",
-				// 													view : "TaskDetail"
-				// 												}
-				// 							    ]
-				// 				     }									
-				// 					]
-				// 				}
-				// 			]
-				// 		},
-						
-				// 		{
-				// 			pattern : "processes",
-				// 			name : "processes",
-				// 			view : "ProcessList"
-				// 		},
-				// 		{
-				// 			pattern : "activations",
-				// 			name : "activations",
-				// 			view : "ActivationList",
-				// 			subroutes : [
-				// 					        {
-				// 						    	 pattern : "activation/{variantId}",
-				// 								 name : "ActivationDetail",
-				// 								 view : "ActivationDetail"
-				// 						     }
-				// 					    ]    
-				// 		}								
-				// 	]
+				},
+				{
+				    name : "splitApp",
+				    pattern : "{from}",
+				    view : "splitApp",
+				    //targetControl : "logbookApp",
+				    targetAggregation : "pages"
 				}
 			]
 		}
