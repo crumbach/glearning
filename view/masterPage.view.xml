@@ -1,0 +1,52 @@
+<core:View 
+	xmlns:core="sap.ui.core" 
+	xmlns="sap.m" 
+	xmlns:commons="sap.ui.commons" 
+	xmlns:layout="sap.ui.layout" 
+	controllerName="sap.ui.demo.logbook.view.masterPage" 
+	viewName="sap.ui.demo.logbook.view.masterPage"
+	id="masterView"
+	>
+    <Page xmlns="sap.m"
+    	id="masterPage"
+    	title="Year"
+    	showNavButton="true"
+    	showHeader="true"
+    	navButtonText=""
+    	enableScrolling="true"
+    	icon=""
+    	backgroundDesign="Standard"
+    	navButtonType="Back"
+    	showFooter="true"
+    	navButtonTap="quitSplitApp"
+    	navButtonPress="quitSplitApp">
+    		<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
+    		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
+    		<content>			    
+    		    <List xmlns="sap.m"
+    		    	id="logbookList"
+    		    	headerText=""
+    		    	footerText=""
+    		    	noDataText="no data available"
+    		    	showNoData="true"
+    		    	swipeDirection="Both"
+    		    	select=""
+    		    	selectionChange=""
+    		    	swipe=""
+    		    	itemPress="onItemPress">
+		    		<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
+		    		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
+		    		<items>
+		    		</items> <!-- sap.m.ListItemBase -->
+		    		<swipeContent></swipeContent> <!-- sap.ui.core.Control -->
+		    		<headerToolbar></headerToolbar> <!-- sap.m.Toolbar, since 1.16 -->
+		    		<infoToolbar></infoToolbar> <!-- sap.m.Toolbar, since 1.16 -->
+		    		<columns></columns> <!-- sap.m.Column -->
+    		    </List>
+            </content> <!-- sap.ui.core.Control -->
+    		<customHeader></customHeader> <!-- sap.m.Bar -->
+    		<footer></footer> <!-- sap.m.Bar -->
+    		<subHeader></subHeader> <!-- sap.m.Bar -->
+    		<headerContent></headerContent> <!-- sap.ui.core.Control -->
+    </Page>
+</core:View>

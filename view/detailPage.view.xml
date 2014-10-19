@@ -1,0 +1,56 @@
+<core:View 
+	xmlns:core="sap.ui.core" 
+	xmlns="sap.m" 
+	xmlns:commons="sap.ui.commons" 
+	xmlns:layout="sap.ui.layout" 
+	controllerName="sap.ui.demo.logbook.view.detailPage" 
+	viewName="sap.ui.demo.logbook.view.detailPage"
+	id="detailView"
+	>
+    <Page xmlns="sap.m"
+    	id="detailPage"
+    	title="Trips in 2014"
+    	showNavButton="true"
+    	showHeader="true"
+    	navButtonText=""
+    	enableScrolling="true"
+    	icon=""
+    	navButtonType="Back"
+    	showFooter="true"
+    	navButtonTap="onDetailBack"
+    	navButtonPress="onDetailBack">
+		<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
+		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
+		<content>
+    		<Table xmlns="sap.m"
+    			id="tripsTable"
+    			inset="false"
+    			visible="true"
+    			headerText="2014"
+    			noDataText="No data available"
+    			showNoData="true"
+			    items="{/logbooks/trips}"
+            >
+				<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
+				<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
+				<items>
+                  <ColumnListItem>
+                    <cells>
+                      <ObjectIdentifier title="{datum}" text="{datum}" />
+                    </cells>
+                  </ColumnListItem>
+                </items> <!-- sap.m.ListItemBase -->
+				<swipeContent></swipeContent> <!-- sap.ui.core.Control -->
+				<headerToolbar></headerToolbar> <!-- sap.m.Toolbar, since 1.16 -->
+				<infoToolbar></infoToolbar> <!-- sap.m.Toolbar, since 1.16 -->
+				<columns>
+                  <Column width="12em"><Text text="Trip recorded on" /></Column>
+                </columns> <!-- sap.m.Column -->
+    		</Table>
+		</content> <!-- sap.ui.core.Control -->
+		<customHeader></customHeader> <!-- sap.m.Bar -->
+		<footer></footer> <!-- sap.m.Bar -->
+		<subHeader></subHeader> <!-- sap.m.Bar -->
+		<headerContent></headerContent> <!-- sap.ui.core.Control -->
+    </Page>
+</core:View>

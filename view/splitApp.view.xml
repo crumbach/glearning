@@ -3,5 +3,14 @@
 	xmlns:mvc="sap.ui.core.mvc"
 	displayBlock="true"
 	xmlns="sap.m">
-	<SplitApp id="idSplitAppControl" />
+	<SplitApp 
+	    id="idSplitApp" 
+		mode="ShowHideMode">
+		<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
+		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
+		<masterPages>
+		</masterPages> <!-- sap.ui.core.Control -->
+		<detailPages>
+		</detailPages> <!-- sap.ui.core.Control -->
+	</SplitApp>
 </mvc:View>
