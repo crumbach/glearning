@@ -88,9 +88,11 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 // 		// Create and set domain model to the component
 // 		var oModel = new sap.ui.model.odata.ODataModel(sServiceUrl, true);
 // 		this.setModel(oModel);
+        var oModel = new sap.ui.model.json.JSONModel("model/listMaster.json");
+        sap.ui.getCore().setModel(oModel);
 
-// 		// Attache Request Failed Handler
-//         oModel.attachRequestFailed(this.oDataErrorHandling); 
+ 		// Attache Request Failed Handler
+         oModel.attachRequestFailed(this.oDataErrorHandling); 
 
 		// set device model
 		var deviceModel = new sap.ui.model.json.JSONModel({
