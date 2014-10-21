@@ -1,4 +1,4 @@
-sap.ui.demo.logbook.util.Controller.extend("sap.ui.demo.logbook.view.App", {
+sap.ui.controller("sap.ui.demo.logbook.view.App", {
 
 	onInit: function() {
 
