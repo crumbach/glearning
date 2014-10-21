@@ -1,7 +1,6 @@
 jQuery.sap.declare("sap.ui.demo.logbook.Component");
 jQuery.sap.require("sap.ui.demo.logbook.MyRouter");
-  
-  
+
 sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 	metadata : {
 		name : "Driver Logbook",
