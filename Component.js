@@ -88,7 +88,7 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 // 		var oModel = new sap.ui.model.odata.ODataModel(sServiceUrl, true);
 // 		this.setModel(oModel);
         var oModel = new sap.ui.model.json.JSONModel("model/listMaster.json");
-        sap.ui.getCore().setModel(oModel);
+        this.setModel(oModel);
 
  		// Attache Request Failed Handler
          oModel.attachRequestFailed(this.oDataErrorHandling); 
