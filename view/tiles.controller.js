@@ -1,9 +1,11 @@
 sap.ui.controller("sap.ui.demo.logbook.view.tiles", {
 
-    onPress : function() {
-//        sap.ui.core.routing.Router.getRouter("MyRouter").navTo("View2",{ from: "View 1"});
-        var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
-        oRouter.navTo("splitApp", { from: "tiles" } );
+    onPressOverview : function() {
+        sap.ui.core.routing.Router.getRouter("appRouter").navTo("splitApp", { from: "tiles" } );
+    },
+    
+    onPressNew : function() {
+        sap.ui.core.routing.Router.getRouter("appRouter").navTo("newTrip");
     }
     
 /**

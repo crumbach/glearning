@@ -44,7 +44,14 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 				    name : "splitApp",
 				    pattern : "{from}",
 				    view : "splitApp",
-				    //targetControl : "logbookApp",
+				    targetControl : "logbookApp",
+				    targetAggregation : "pages"
+				},
+				{
+				    name : "newTrip",
+				    pattern : "",
+				    view : "newTrip",
+				    targetControl : "logbookApp",
 				    targetAggregation : "pages"
 				}
 			]
