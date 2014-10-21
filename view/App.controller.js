@@ -1,5 +1,3 @@
-jQuery.sap.require("sap.ui.demo.logbook.util.Controller");
-
 sap.ui.demo.logbook.util.Controller.extend("sap.ui.demo.logbook.view.App", {
 
 	onInit: function() {
