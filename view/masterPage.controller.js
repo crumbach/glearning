@@ -18,13 +18,7 @@ sap.ui.controller("sap.ui.demo.logbook.view.masterPage", {
 	},
 
 	onItemPress: function() {
-	    var oView = sap.ui.getCore().byId("overview");
-        var oSplitApp = oView.byId("logbookView");
-        oView = oSplitApp.getDetailPage("detailView");
-        var oPage = oView.byId("detailPage");
-        oPage.setTitle("New navigation");
-
-		oSplitApp.to("detailView--detailPage");
+        sap.ui.core.routing.Router.getRouter("appRouter").navTo("details", { year: "{title}" } );
 	}
 	
 /**

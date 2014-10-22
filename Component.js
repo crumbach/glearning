@@ -36,24 +36,30 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 					name : "tiles",
 					pattern : "",
 					view : "tiles",
-				    targetControl : "logbookApp",
-				    targetAggregation : "pages",
-				    clearTarget : true
+    				targetControl : "logbookApp", 
+    				targetAggregation : "pages",
+    				clearTarget : false
 				},
 				{
 				    name : "splitApp",
-				    pattern : "{from}",
+				    pattern : "/tiles/{from}",
 				    view : "splitApp",
-				    targetControl : "logbookApp",
-				    targetAggregation : "pages"
-				},
-				{
-				    name : "newTrip",
-				    pattern : "",
-				    view : "newTrip",
-				    targetControl : "logbookApp",
-				    targetAggregation : "pages"
-				}
+				    subroutes : [ {
+				            name : "details",
+				            pattern : "{year}",
+				            view : "detailPage",
+            				targetControl : "idSplitApp", 
+            				targetAggregation : "detailPages"
+				        }
+				    ]
+			    }
+//				{
+//				    name : "newTrip",
+//				    pattern : "",
+//				    view : "newTrip",
+//				    targetControl : "logbookApp",
+//				    targetAggregation : "pages"
+//				}
 			]
 		}
 	},
