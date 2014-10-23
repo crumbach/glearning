@@ -1,0 +1,42 @@
+<mvc:View 
+  xmlns:core="sap.ui.core" 
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:layout="sap.ui.layout" 
+  xmlns:form="sap.ui.layout.form" 
+  xmlns:me="sap.me"
+  xmlns="sap.m" 
+  controllerName="sap.ui.demo.logbook.view.newTrip">
+    <Page class="sapUiFioriObjectPage" title="Add Trip" showNavButton="true">
+        <layout:Grid defaultSpan="L12 M12 S12" width="auto">
+            <layout:content>
+
+                <me:Calendar id="selectionCalendar"
+                     selectionMode="SINGLE"
+                     tapOnDate="onTapOnDate"
+                     changeRange="onChangeRange"
+                     width="640px"/>
+                <layout:HorizontalLayout>
+                    <RadioButton text="Single Selection" select="changeToSingleSelectionMode" groupName="selectionGroup"
+                                 selected="true"/>
+                    <RadioButton text="Range Selection" select="changeToRangeSelectionMode" groupName="selectionGroup"/>
+                    <RadioButton text="Multi Selection" select="changeToMultiSelectionMode" groupName="selectionGroup"/>
+                </layout:HorizontalLayout>
+                <List   id="selectedDatesList"
+                        class="labelMarginLeft"
+                        noDataText="No Dates Selected"
+                        headerText="Selected Dates"
+                        items="{path: '/selectedDates'}">
+                    <StandardListItem title="{Date}"/>
+                </List>
+                
+            </layout:content>
+        </layout:Grid>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer/>
+                <Button text="Save" type="Emphasized" press="onSave"/>
+                <Button text="Cancel" press="onCancel"/>
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>
