@@ -1,11 +1,15 @@
 sap.ui.controller("sap.ui.demo.logbook.view.tiles", {
 
-    onPressOverview : function() {
-        sap.ui.core.routing.Router.getRouter("appRouter").navTo("splitApp", { from: "tiles" } );
-    },
-    
-    onPressNew : function() {
-        sap.ui.core.routing.Router.getRouter("appRouter").navTo("newTrip");
+    onPressTile : function(oEvent) {
+        var oTileName = oEvent.getSource().getId();
+
+        if (oTileName.indexOf("tileLogTrip") !== -1) {
+            sap.ui.core.routing.Router.getRouter("appRouter").navTo("newTrip", { from: "tiles" } );
+        } else if (oTileName.indexOf("tileTripOverview") !== -1) {
+            sap.ui.core.routing.Router.getRouter("appRouter").navTo("splitApp", { from: "tiles" } );
+        } else {
+            console.log(oTileName);
+        }
     }
     
 /**

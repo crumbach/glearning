@@ -18,7 +18,7 @@
 				infoState="None" 
 				type="None" 
 				iconDensityAware="true"
-				press="onPressOverview">
+				press="onPressTile">
 				<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
 				<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 			</StandardTile>
@@ -34,7 +34,7 @@
 				infoState="None" 
 				type="Create"
 				iconDensityAware="true" 
-				press="onPressNew">
+				press="onPressTile">
 				<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
 				<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 			</StandardTile>

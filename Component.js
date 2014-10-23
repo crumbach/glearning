@@ -35,16 +35,19 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 				{
 					name : "tiles",
 					pattern : "",
-					view : "tiles",
-    				targetControl : "logbookApp", 
-    				targetAggregation : "pages",
-    				clearTarget : false
+					view : "tiles"
 				},
+			    {
+				    name : "newTrip",
+				    pattern : "{from}",
+				    view : "newTrip"
+			    },
 				{
 				    name : "splitApp",
 				    pattern : "/tiles/{from}",
 				    view : "splitApp",
-				    subroutes : [ {
+				    subroutes : [ 
+				        {
 				            name : "details",
 				            pattern : "{year}",
 				            view : "detailPage",
@@ -53,21 +56,13 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 				        }
 				    ]
 			    }
-//				{
-//				    name : "newTrip",
-//				    pattern : "",
-//				    view : "newTrip",
-//				    targetControl : "logbookApp",
-//				    targetAggregation : "pages"
-//				}
 			]
 		}
 	},
 
 	init : function() {
 		jQuery.sap.require("sap.m.routing.RouteMatchedHandler");
-		jQuery.sap.require("sap.ui.demo.logbook.MyRouter");
-		
+
 		sap.ui.core.UIComponent.prototype.init.apply(this, arguments);
 
 // 		var mConfig = this.getMetadata().getConfig();
