@@ -118,4 +118,3 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 	}
 
 });
-
