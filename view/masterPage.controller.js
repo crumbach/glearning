@@ -5,20 +5,23 @@ sap.ui.controller("sap.ui.demo.logbook.view.masterPage", {
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 * @memberOf sap.ui.demo.logbook.view.masterPage
 */
+
 	onInit: function() {
-        var oList = this.getView().byId("logbookList");
-        oList.bindItems({
-    		path : "/logbooks",
-    		template : new sap.m.StandardListItem({
-    			title       : "{title}",
-    			description : "{desc}",
-    			type        : "Navigation"
-    		})
-    	});
 	},
 
-	onItemPress: function() {
-        sap.ui.core.routing.Router.getRouter("appRouter").navTo("details", { year: "{title}" } );
+	onSelect: function(oEvent) {
+		// Get the list item, either from the listItem parameter or from the event's
+		// source itself (will depend on the device-dependent mode).
+		this.showDetail(oEvent.getParameter("listItem") || oEvent.getSource());
+	},
+	
+	showDetail: function(oItem) {
+		// If we're on a phone, include nav in history; if not, don't.
+		var bReplace = jQuery.device.is.phone ? false : true;
+		sap.ui.core.UIComponent.getRouterFor(this).navTo("details", {
+			from: "logbook",
+			year: oItem.getBindingContextPath().substr(10) //skip "/logbooks/"
+		}, bReplace);
 	},
 	
 	quitSplitApp : function() {

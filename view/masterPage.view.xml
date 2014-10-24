@@ -9,7 +9,7 @@
 	>
     <Page xmlns="sap.m"
     	id="masterPage"
-    	title="Year"
+    	title="Trips per Year"
     	showNavButton="true"
     	showHeader="true"
     	navButtonText=""
@@ -25,16 +25,10 @@
     		<content>			    
     		    <List xmlns="sap.m"
     		    	id="logbookList"
-                    items="{/Products}"
-                    headerText=""
-    		    	footerText=""
+                    items="{/logbooks}"
     		    	noDataText="no data available"
     		    	showNoData="true"
-    		    	swipeDirection="Both"
-    		    	select=""
-    		    	selectionChange=""
-    		    	swipe=""
-    		    	itemPress="onItemPress">
+    		    	select="onSelect" >
 		    		<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
 		    		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 		    		<swipeContent></swipeContent> <!-- sap.ui.core.Control -->
@@ -43,10 +37,10 @@
 		    		<columns></columns> <!-- sap.m.Column -->
     				<items>
     					<ObjectListItem
-    						type="{device>/logbooks}"
+    						type="Active"
     						press="onSelect"
-    						title="{title}"
-    						number="{descr}"
+    						title="Trips in {year}"
+    						number="{number}"
     						numberUnit="trips">
     					</ObjectListItem>
     				</items>

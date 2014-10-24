@@ -1,15 +1,15 @@
 {
     "logbooks" : [ {
-			"title" : "2014",
-			"desc"  : "32 trips",
+			"year" : "2014",
+			"number"  : "32",
 			"trips" : [ { "datum":"01.10.2014" }, {"datum":"01.10.2014"} ]
 		}, {
-			"title" : "2013",
-			"desc"  : "56 trips",
+			"year" : "2013",
+			"number"  : "56",
 			"trips" : [ { "datum":"01.10.2013" }, {"datum":"01.10.2013"} ]
 		}, {
-			"title" : "2012",
-			"desc"  : "48 trips",
+			"year" : "2012",
+			"number"  : "48",
 			"trips" : [ { "datum":"01.10.2012" }, {"datum":"01.10.2012"} ]
 		} ]
 }
