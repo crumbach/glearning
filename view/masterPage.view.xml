@@ -37,7 +37,7 @@
 		    		<columns></columns> <!-- sap.m.Column -->
     				<items>
     					<ObjectListItem
-    						type="Navigation"
+    						type="Active"
     						press="onSelect"
     						title="Trips in {year}"
     						number="{number}"
