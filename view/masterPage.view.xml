@@ -25,7 +25,8 @@
     		<content>			    
     		    <List xmlns="sap.m"
     		    	id="logbookList"
-    		    	headerText=""
+                    items="{/Products}"
+                    headerText=""
     		    	footerText=""
     		    	noDataText="no data available"
     		    	showNoData="true"
@@ -36,12 +37,19 @@
     		    	itemPress="onItemPress">
 		    		<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
 		    		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
-		    		<items>
-		    		</items> <!-- sap.m.ListItemBase -->
 		    		<swipeContent></swipeContent> <!-- sap.ui.core.Control -->
 		    		<headerToolbar></headerToolbar> <!-- sap.m.Toolbar, since 1.16 -->
 		    		<infoToolbar></infoToolbar> <!-- sap.m.Toolbar, since 1.16 -->
 		    		<columns></columns> <!-- sap.m.Column -->
+    				<items>
+    					<ObjectListItem
+    						type="{device>/logbooks}"
+    						press="onSelect"
+    						title="{title}"
+    						number="{descr}"
+    						numberUnit="trips">
+    					</ObjectListItem>
+    				</items>
     		    </List>
             </content> <!-- sap.ui.core.Control -->
     		<customHeader></customHeader> <!-- sap.m.Bar -->

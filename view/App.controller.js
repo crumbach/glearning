@@ -1,8 +1,8 @@
 sap.ui.controller("sap.ui.demo.logbook.view.App", {
 
-	onInit: function() {
+//	onInit: function() {
 
- 		var view = this.getView();
+// 		var view = this.getView();
 
 // 		// to avoid scrollbars on desktop the root view must be set to block display
 // 		view.setDisplayBlock(true);
@@ -34,6 +34,6 @@ sap.ui.controller("sap.ui.demo.logbook.view.App", {
 // 			'precomposed': false
 // 		});
 
-	}
+//	}
 
 });

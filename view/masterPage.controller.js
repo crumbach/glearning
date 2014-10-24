@@ -19,6 +19,10 @@ sap.ui.controller("sap.ui.demo.logbook.view.masterPage", {
 
 	onItemPress: function() {
         sap.ui.core.routing.Router.getRouter("appRouter").navTo("details", { year: "{title}" } );
+	},
+	
+	quitSplitApp : function() {
+	    sap.ui.core.routing.Router.getRouter("appRouter").myNavBack("tiles");
 	}
 	
 /**

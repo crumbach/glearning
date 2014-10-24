@@ -33,19 +33,24 @@
             >
 				<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
 				<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
+				<columns>
+                  <Column width="12em"><Text text="Year" /></Column>
+                  <Column width="12em"><Text text="No. of trips" /></Column>
+                </columns> <!-- sap.m.Column -->
 				<items>
                   <ColumnListItem>
                     <cells>
-                      <ObjectIdentifier title="{datum}" text="{datum}" />
+                        <ObjectIdentifier 
+                            title="{title}" 
+                            text="{descr}"
+                            class="sapMTableContentMargin" />
+                        <Text text="{descr}" />
                     </cells>
                   </ColumnListItem>
                 </items> <!-- sap.m.ListItemBase -->
 				<swipeContent></swipeContent> <!-- sap.ui.core.Control -->
 				<headerToolbar></headerToolbar> <!-- sap.m.Toolbar, since 1.16 -->
 				<infoToolbar></infoToolbar> <!-- sap.m.Toolbar, since 1.16 -->
-				<columns>
-                  <Column width="12em"><Text text="Trip recorded on" /></Column>
-                </columns> <!-- sap.m.Column -->
     		</Table>
 		</content> <!-- sap.ui.core.Control -->
 		<customHeader></customHeader> <!-- sap.m.Bar -->

@@ -6,8 +6,8 @@ sap.ui.controller("sap.ui.demo.logbook.view.detailPage", {
 * @memberOf sap.ui.demo.logbook.view.detailPage
 */
 	onInit: function() {
-//        var oModel = new sap.ui.model.json.JSONModel("model/listMaster.json");
-//        sap.ui.getCore().setModel(oModel);
+        var oModel = new sap.ui.model.json.JSONModel("model/listMaster.json");
+        sap.ui.getCore().setModel(oModel);
 	}
 	
 /**

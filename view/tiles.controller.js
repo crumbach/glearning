@@ -8,7 +8,7 @@ sap.ui.controller("sap.ui.demo.logbook.view.tiles", {
         } else if (oTileName.indexOf("tileTripOverview") !== -1) {
             sap.ui.core.routing.Router.getRouter("appRouter").navTo("splitApp", { from: "tiles" } );
         } else {
-            console.log(oTileName);
+            sap.m.MessageToast("No route maintained for " + oTileName);
         }
     }
     

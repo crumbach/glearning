@@ -39,12 +39,12 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 				},
 			    {
 				    name : "newTrip",
-				    pattern : "{from}",
+				    pattern : "new/{from}",
 				    view : "newTrip"
 			    },
 				{
 				    name : "splitApp",
-				    pattern : "/tiles/{from}",
+				    pattern : "trips/{from}",
 				    view : "splitApp",
 				    subroutes : [ 
 				        {
