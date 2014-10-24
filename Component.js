@@ -23,8 +23,7 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 
 		routing : {
 			config : {
-				routerClass : sap.ui.demo.logbook.MyRouter,
-				viewType : "XML",
+				routerClass : sap.ui.demo.logbook.MyRouter, viewType : "XML",
 				viewPath : "sap.ui.demo.logbook.view",
 				targetControl : "logbookApp", 
 				targetAggregation : "pages",
