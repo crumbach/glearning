@@ -8,7 +8,13 @@ sap.ui.controller("sap.ui.demo.logbook.view.detailPage", {
 	onInit: function() {
         var oModel = new sap.ui.model.json.JSONModel("model/listMaster.json");
         sap.ui.getCore().setModel(oModel);
+	},
+
+	onNavBack : function() {
+		// This is only relevant when running on phone devices
+		sap.ui.core.UIComponent.getRouterFor(this).myNavBack("main");
 	}
+
 	
 /**
 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
