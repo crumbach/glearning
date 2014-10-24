@@ -6,11 +6,24 @@ sap.ui.controller("sap.ui.demo.logbook.view.masterPage", {
 * @memberOf sap.ui.demo.logbook.view.masterPage
 */
 
-// 	onInit: function() {
-// 	},
+	onInit: function() {
+	},
 
-	onItemPress: function() {
-        sap.ui.core.routing.Router.getRouter("appRouter").navTo("details", { year: "{title}" } );
+	onSelect: function(oEvent) {
+		// Get the list item, either from the listItem parameter or from the event's
+		// source itself (will depend on the device-dependent mode).
+		this.showDetail(oEvent.getParameter("listItem") || oEvent.getSource());
+	},
+	
+	showDetail: function(oItem) {
+		// If we're on a phone, include nav in history; if not, don't.
+		var bReplace = jQuery.device.is.phone ? false : true;
+		sap.ui.core.UIComponent.getRouterFor(this).navTo("product", {
+			from: "master",
+			year: oItem.getBindingContext().getPath().substr(1)
+		}, bReplace);
+
+        sap.ui.core.routing.Router.getRouter("appRouter").navTo("details", { year: "{year}" } );
 	},
 	
 	quitSplitApp : function() {

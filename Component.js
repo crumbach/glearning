@@ -39,11 +39,11 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 				},
 				{
 				    name : "splitApp",
-				    pattern : "trips",
+				    pattern : "overview",
 				    view : "splitApp",
 				    subroutes : [ {
 				            name : "details",
-				            pattern : "trips/{year}",
+				            pattern : "{year}",
 				            view : "detailPage",
             				targetControl : "idSplitApp", 
             				targetAggregation : "detailPages"
