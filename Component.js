@@ -37,32 +37,32 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 					pattern : "",
 					view : "tiles"
 				},
-			    {
-				    name : "newTrip",
-				    pattern : "new/{from}",
-				    view : "newTrip"
-			    },
 				{
 				    name : "splitApp",
-				    pattern : "trips/{from}",
+				    pattern : "trips",
 				    view : "splitApp",
-				    subroutes : [ 
-				        {
+				    subroutes : [ {
 				            name : "details",
-				            pattern : "{year}",
+				            pattern : "trips/{year}",
 				            view : "detailPage",
             				targetControl : "idSplitApp", 
             				targetAggregation : "detailPages"
 				        }
 				    ]
-			    }
+			    },
+				{
+				    name : "newTrip",
+				    pattern : "newtrip",
+				    view : "newTrip"
+				}
 			]
 		}
 	},
 
 	init : function() {
 		jQuery.sap.require("sap.m.routing.RouteMatchedHandler");
-
+		jQuery.sap.require("sap.ui.demo.logbook.MyRouter");
+		
 		sap.ui.core.UIComponent.prototype.init.apply(this, arguments);
 
 // 		var mConfig = this.getMetadata().getConfig();
@@ -118,4 +118,3 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 	}
 
 });
-
