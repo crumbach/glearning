@@ -5,6 +5,10 @@ sap.ui.controller("sap.ui.demo.logbook.view.newTrip", {
         this.getView().setModel(this.oModel);
 	},
 
+	onNavBack : function(oEvent) {
+	    sap.ui.core.routing.Router.getRouter("appRouter").myNavBack("tiles", { from : "newTrip"}, false);
+	},
+	
 	onSave : function() {
 
 	},

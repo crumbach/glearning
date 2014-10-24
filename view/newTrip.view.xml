@@ -1,31 +1,37 @@
 <mvc:View 
   xmlns:core="sap.ui.core" 
   xmlns:mvc="sap.ui.core.mvc"
-  xmlns:layout="sap.ui.layout" 
+  xmlns:l="sap.ui.layout" 
   xmlns:me="sap.me"
   xmlns="sap.m" 
   controllerName="sap.ui.demo.logbook.view.newTrip">
-    <Page class="sapUiFioriObjectPage" title="Add Trip" showNavButton="true">
-        <layout:VerticalLayout class="marginAll">
-                <me:Calendar id="selectionCalendar"
-                     selectionMode="SINGLE"
-                     tapOnDate="onTapOnDate"
-                     changeRange="onChangeRange"/>
-                <layout:HorizontalLayout>
-                    <RadioButton text="Single Selection" select="changeToSingleSelectionMode" groupName="selectionGroup"
-                                 selected="true"/>
-                    <RadioButton text="Range Selection" select="changeToRangeSelectionMode" groupName="selectionGroup"/>
-                    <RadioButton text="Multi Selection" select="changeToMultiSelectionMode" groupName="selectionGroup"/>
-                </layout:HorizontalLayout>
-                <List   id="selectedDatesList"
-                        class="labelMarginLeft"
-                        noDataText="No Dates Selected"
-                        headerText="Selected Dates"
-                        items="{path: '/selectedDates'}">
-                    <StandardListItem title="{Date}"/>
-                </List>
-                
-        </layout:VerticalLayout>
+    <Page class="sapUiFioriObjectPage" 
+          title="Add Trip" 
+          showNavButton="true"
+          navButtonPress="onNavBack">
+        <l:Grid defaultSpan="L12 M12 S12" width="auto" hSpacing="2" class="gridMarginTop">
+            <l:content>
+            <me:Calendar id="selectionCalendar"
+                 selectionMode="SINGLE"
+                 tapOnDate="onTapOnDate"
+                 changeRange="onChangeRange"/>
+
+            <l:HorizontalLayout>
+                <RadioButton text="Single Selection" select="changeToSingleSelectionMode" groupName="selectionGroup"
+                             selected="true"/>
+                <RadioButton text="Range Selection" select="changeToRangeSelectionMode" groupName="selectionGroup"/>
+                <RadioButton text="Multi Selection" select="changeToMultiSelectionMode" groupName="selectionGroup"/>
+            </l:HorizontalLayout>
+            
+            <List   id="selectedDatesList"
+                    class="labelMarginLeft"
+                    noDataText="No Dates Selected"
+                    headerText="Selected Dates"
+                    items="{path: '/selectedDates'}">
+                <StandardListItem title="{Date}"/>
+            </List>
+            </l:content>
+        </l:Grid>
         <footer>
             <Toolbar>
                 <ToolbarSpacer/>
