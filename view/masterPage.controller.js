@@ -18,12 +18,10 @@ sap.ui.controller("sap.ui.demo.logbook.view.masterPage", {
 	showDetail: function(oItem) {
 		// If we're on a phone, include nav in history; if not, don't.
 		var bReplace = jQuery.device.is.phone ? false : true;
-		sap.ui.core.UIComponent.getRouterFor(this).navTo("product", {
-			from: "master",
-			year: oItem.getBindingContext().getPath().substr(1)
+		sap.ui.core.UIComponent.getRouterFor(this).navTo("details", {
+			from: "logbook",
+			year: oItem.getBindingContextPath().substr(10) //skip "/logbooks/"
 		}, bReplace);
-
-        sap.ui.core.routing.Router.getRouter("appRouter").navTo("details", { year: "{year}" } );
 	},
 	
 	quitSplitApp : function() {
