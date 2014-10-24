@@ -25,7 +25,7 @@
     		<content>			    
     		    <List xmlns="sap.m"
     		    	id="logbookList"
-                    items="{/Products}"
+                    items="{/logbooks}"
                     headerText=""
     		    	footerText=""
     		    	noDataText="no data available"
@@ -45,8 +45,8 @@
     					<ObjectListItem
     						type="{device>/logbooks}"
     						press="onSelect"
-    						title="{title}"
-    						number="{descr}"
+    						title="{year}"
+    						number="{number}"
     						numberUnit="trips">
     					</ObjectListItem>
     				</items>

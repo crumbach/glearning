@@ -5,17 +5,9 @@ sap.ui.controller("sap.ui.demo.logbook.view.masterPage", {
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 * @memberOf sap.ui.demo.logbook.view.masterPage
 */
-	onInit: function() {
-        var oList = this.getView().byId("logbookList");
-        oList.bindItems({
-    		path : "/logbooks",
-    		template : new sap.m.StandardListItem({
-    			title       : "{title}",
-    			description : "{desc}",
-    			type        : "Navigation"
-    		})
-    	});
-	},
+
+// 	onInit: function() {
+// 	},
 
 	onItemPress: function() {
         sap.ui.core.routing.Router.getRouter("appRouter").navTo("details", { year: "{title}" } );
