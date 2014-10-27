@@ -22,50 +22,74 @@
     	navButtonTap="onDetailBack"
     	navButtonPress="onDetailBack"
     	>
-			<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
-			<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
-			<content>
-    			<l:Grid
-    		        defaultSpan="L12 M12 S12"
-    		        hSpacing="2"
-    		        width="auto">
-                    <l:content>
-        		        <f:Form id="Form1"
-        		            minWidth="1024"
-        		            maxContainerCols="2"
-        		            editable="false"
-        		            class="isReadOnly">
-        		            <f:title>
-        		                <core:Title text="So many trips in {year}" />
-        		            </f:title>
-                            <f:layout>
-                              <f:ResponsiveGridLayout
-                                labelSpanL="3"
-                                labelSpanM="3"
-                                emptySpanL="4"
-                                emptySpanM="4"
-                                columnsL="1"
-                                columnsM="1" />
-                            </f:layout>
-                            <f:formContainers>
-                              <f:FormContainer>
-                                <f:formElements>
-                                  <f:FormElement label="Name">
-                                    <f:fields>
-                                      <Text text="{SupplierName}" />
-                                    </f:fields>
-                                  </f:FormElement>
-                                </f:formElements>
-                              </f:FormContainer>
-                            </f:formContainers>
-        	            </f:Form>
-    	            </l:content>
-    		    </l:Grid>
-			</content> <!-- sap.ui.core.Control -->
-			<customHeader></customHeader> <!-- sap.m.IBar -->
-			<footer></footer> <!-- sap.m.IBar -->
-			<subHeader></subHeader> <!-- sap.m.IBar -->
-			<headerContent></headerContent> <!-- sap.ui.core.Control -->
+		<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
+		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
+		<content>
+			<l:Grid
+		        defaultSpan="L12 M12 S12"
+		        hSpacing="2"
+		        width="auto">
+                <l:content>
+    		        <f:Form id="Form1"
+    		            minWidth="1024"
+    		            maxContainerCols="2"
+    		            editable="false"
+    		            class="isReadOnly">
+    		            <f:title>
+    		                <core:Title text="So many trips in {year}" />
+    		            </f:title>
+                        <f:layout>
+                          <f:ResponsiveGridLayout
+                            labelSpanL="3"
+                            labelSpanM="3"
+                            emptySpanL="4"
+                            emptySpanM="4"
+                            columnsL="1"
+                            columnsM="1" />
+                        </f:layout>
+                        <f:formContainers>
+                          <f:FormContainer>
+                            <f:formElements>
+                              <f:FormElement label="Year">
+                                <f:fields>
+                                  <Text text="{title}" />
+                                </f:fields>
+                              </f:FormElement>
+                              <f:FormElement>
+                          		<Table xmlns="sap.m"
+                        			id="tripsTable"
+                        			inset="false"
+                        			visible="true"
+                        			noDataText="No data available"
+                        			showNoData="true"
+                    			    items="{
+                    			        path: '/logbooks/0/trips'
+                    			    }">
+                    				<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
+                    				<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
+                    				<columns>
+                                      <Column width="12em"><Text text="Date" /></Column>
+                                    </columns> <!-- sap.m.Column -->
+                    				<items>
+                                      <ColumnListItem>
+                                        <Text text="{datum}" />
+                                      </ColumnListItem>
+                                    </items> <!-- sap.m.ListItemBase -->
+                    				<swipeContent></swipeContent> <!-- sap.ui.core.Control -->
+                    				<headerToolbar></headerToolbar> <!-- sap.m.Toolbar, since 1.16 -->
+                    				<infoToolbar></infoToolbar> <!-- sap.m.Toolbar, since 1.16 -->
+                        		</Table>
+                              </f:FormElement>
+                            </f:formElements>
+                          </f:FormContainer>
+                        </f:formContainers>
+    	            </f:Form>
+	            </l:content>
+		    </l:Grid>
+		</content> <!-- sap.ui.core.Control -->
+		<customHeader></customHeader> <!-- sap.m.IBar -->
+		<footer></footer> <!-- sap.m.IBar -->
+		<subHeader></subHeader> <!-- sap.m.IBar -->
+		<headerContent></headerContent> <!-- sap.ui.core.Control -->
 	</Page>
-	
 </core:View>

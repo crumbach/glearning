@@ -6,10 +6,89 @@ sap.ui.controller("sap.ui.demo.logbook.view.detailPage", {
 * @memberOf sap.ui.demo.logbook.view.detailPage
 */
 	onInit: function() {
-        var oModel = new sap.ui.model.json.JSONModel("model/listMaster.json");
-        sap.ui.getCore().setModel(oModel);
+		this.oInitialLoadFinishedDeferred = jQuery.Deferred();
+
+        // var oTable = this.byId("tripsTable");
+        // oTable.bindElement("/logbooks/1/tri");
+        
+// 		if(sap.ui.Device.system.phone) {
+// 			//don't wait for the master on a phone
+// 			this.oInitialLoadFinishedDeferred.resolve();
+// 		} else {
+// 			this.getView().setBusy(true);
+// 			this.getEventBus().subscribe("masterPage", "InitialLoadFinished", this.onMasterLoaded, this);
+// 		}
+
+		sap.ui.core.routing.Router.getRouter("appRouter").attachRoutePatternMatched(this.onRouteMatched, this);
+		
+		var oView = this.getView();
+		sap.ui.core.UIComponent.getRouterFor(this).attachRouteMatched(function(oEvent) {
+			// when detail navigation occurs, update the binding context
+			if (oEvent.getParameter("name") === "year") {
+
+    			var sPath = this.buildPath(oEvent.getParameter("arguments").year);
+
+				oView.bindElement(sPath);
+
+				// Check that the product specified actually was found
+				oView.getElementBinding().attachEventOnce("dataReceived", jQuery.proxy(function() {
+					var oData = oView.getModel().getData(sPath);
+					if (!oData) {
+						sap.ui.core.UIComponent.getRouterFor(this).myNavToWithoutHash({
+							currentView : oView,
+							targetViewName : "sap.ui.demo.logbook.view.NotFound",
+							targetViewType : "XML"
+						});
+					}
+				}, this));
+
+			}
+		}, this);
 	},
 
+    onRouteMatched : function(oEvent) {
+		var oParameters = oEvent.getParameters();
+
+//		jQuery.when(this.oInitialLoadFinishedDeferred).then(jQuery.proxy(function () {
+//		    var oView = this.getView();
+
+			// when detail navigation occurs, update the binding context
+			if (oParameters.name !== "details") { 
+				return;
+			}
+
+			var sPath = this.buildPath(oEvent.getParameter("arguments").year);
+			this.bindView(sPath);
+//		}, this));
+
+	},
+	
+	buildPath : function(year) {
+	    return "/logbooks/" + year + "/trips";
+	},
+	
+	bindView : function (sPath) {
+		var oView = this.getView();
+		oView.bindElement(sPath);
+
+		//Check if the data is already on the client
+		if(!oView.getModel().getData(sPath)) {
+
+			// Check that the logbook specified actually was found.
+			oView.getElementBinding().attachEventOnce("dataReceived", jQuery.proxy(function() {
+				var oData = oView.getModel().getData(sPath);
+				if (!oData) {
+					this.showEmptyView();
+					this.fireDetailNotFound();
+//				} else {
+//					this.fireDetailChanged(sPath);
+				}
+			}, this));
+		} else {
+			this.fireDetailChanged(sPath);
+		}
+	},
+	
 	onNavBack : function() {
 		// This is only relevant when running on phone devices
 		sap.ui.core.UIComponent.getRouterFor(this).myNavBack("main");
