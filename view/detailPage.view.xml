@@ -2,15 +2,17 @@
 	xmlns:core="sap.ui.core" 
 	xmlns="sap.m" 
 	xmlns:commons="sap.ui.commons" 
-	xmlns:layout="sap.ui.layout" 
+	xmlns:l="sap.ui.layout" 
+	xmlns:f="sap.ui.layout.form"
 	controllerName="sap.ui.demo.logbook.view.detailPage" 
 	viewName="sap.ui.demo.logbook.view.detailPage"
 	id="detailView"
 	>
     <Page xmlns="sap.m"
+		class="sapUiFioriObjectPage"
     	id="detailPage"
-    	title="Trips in 2014"
-    	showNavButton="true"
+    	title="Trips in {year}"
+		showNavButton="{device>/isPhone}"
     	showHeader="true"
     	navButtonText=""
     	enableScrolling="true"
@@ -18,44 +20,72 @@
     	navButtonType="Back"
     	showFooter="true"
     	navButtonTap="onDetailBack"
-    	navButtonPress="onDetailBack">
+    	navButtonPress="onDetailBack"
+    	>
 		<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 		<content>
-    		<Table xmlns="sap.m"
-    			id="tripsTable"
-    			inset="false"
-    			visible="true"
-    			headerText="2014"
-    			noDataText="No data available"
-    			showNoData="true"
-			    items="{/logbooks/trips}"
-            >
-				<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
-				<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
-				<columns>
-                  <Column width="12em"><Text text="Year" /></Column>
-                  <Column width="12em"><Text text="No. of trips" /></Column>
-                </columns> <!-- sap.m.Column -->
-				<items>
-                  <ColumnListItem>
-                    <cells>
-                        <ObjectIdentifier 
-                            title="{title}" 
-                            text="{descr}"
-                            class="sapMTableContentMargin" />
-                        <Text text="{descr}" />
-                    </cells>
-                  </ColumnListItem>
-                </items> <!-- sap.m.ListItemBase -->
-				<swipeContent></swipeContent> <!-- sap.ui.core.Control -->
-				<headerToolbar></headerToolbar> <!-- sap.m.Toolbar, since 1.16 -->
-				<infoToolbar></infoToolbar> <!-- sap.m.Toolbar, since 1.16 -->
-    		</Table>
+			<l:Grid
+		        defaultSpan="L12 M12 S12"
+		        hSpacing="2"
+		        width="auto">
+                <l:content>
+    		        <f:Form id="Form1"
+    		            minWidth="1024"
+    		            maxContainerCols="2"
+    		            editable="false"
+    		            class="isReadOnly">
+    		            <f:title>
+    		                <core:Title text="{number} trips in {year}" />
+    		            </f:title>
+                        <f:layout>
+                          <f:ResponsiveGridLayout
+                            labelSpanL="3"
+                            labelSpanM="3"
+                            emptySpanL="4"
+                            emptySpanM="4"
+                            columnsL="1"
+                            columnsM="1" />
+                        </f:layout>
+                        <f:formContainers>
+                          <f:FormContainer>
+                            <f:formElements>
+                              <f:FormElement>
+                          		<Table xmlns="sap.m"
+                        			id="tripsTable"
+                        			inset="false"
+                        			visible="true"
+                        			noDataText="No data available"
+                        			showNoData="true"
+                    			    items="{
+                    			        path: 'trips'
+                    			    }"
+                    			    >
+                    				<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
+                    				<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
+                    				<columns>
+                                      <Column width="12em"><Text text="Date" /></Column>
+                                    </columns> <!-- sap.m.Column -->
+                    				<items>
+                                      <ColumnListItem>
+                                        <Text text="{datum}" />
+                                      </ColumnListItem>
+                                    </items> <!-- sap.m.ListItemBase -->
+                    				<swipeContent></swipeContent> <!-- sap.ui.core.Control -->
+                    				<headerToolbar></headerToolbar> <!-- sap.m.Toolbar, since 1.16 -->
+                    				<infoToolbar></infoToolbar> <!-- sap.m.Toolbar, since 1.16 -->
+                        		</Table>
+                              </f:FormElement>
+                            </f:formElements>
+                          </f:FormContainer>
+                        </f:formContainers>
+    	            </f:Form>
+	            </l:content>
+		    </l:Grid>
 		</content> <!-- sap.ui.core.Control -->
-		<customHeader></customHeader> <!-- sap.m.Bar -->
-		<footer></footer> <!-- sap.m.Bar -->
-		<subHeader></subHeader> <!-- sap.m.Bar -->
+		<customHeader></customHeader> <!-- sap.m.IBar -->
+		<footer></footer> <!-- sap.m.IBar -->
+		<subHeader></subHeader> <!-- sap.m.IBar -->
 		<headerContent></headerContent> <!-- sap.ui.core.Control -->
-    </Page>
+	</Page>
 </core:View>
