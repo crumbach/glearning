@@ -11,7 +11,7 @@
     <Page xmlns="sap.m"
 		class="sapUiFioriObjectPage"
     	id="detailPage"
-    	title="Trips in 2014"
+    	title="Trips in {year}"
 		showNavButton="{device>/isPhone}"
     	showHeader="true"
     	navButtonText=""
@@ -36,7 +36,7 @@
     		            editable="false"
     		            class="isReadOnly">
     		            <f:title>
-    		                <core:Title text="So many trips in {year}" />
+    		                <core:Title text="{number} trips in {year}" />
     		            </f:title>
                         <f:layout>
                           <f:ResponsiveGridLayout
@@ -50,11 +50,6 @@
                         <f:formContainers>
                           <f:FormContainer>
                             <f:formElements>
-                              <f:FormElement label="Year">
-                                <f:fields>
-                                  <Text text="{title}" />
-                                </f:fields>
-                              </f:FormElement>
                               <f:FormElement>
                           		<Table xmlns="sap.m"
                         			id="tripsTable"
@@ -63,8 +58,9 @@
                         			noDataText="No data available"
                         			showNoData="true"
                     			    items="{
-                    			        path: '/logbooks/0/trips'
-                    			    }">
+                    			        path: 'trips'
+                    			    }"
+                    			    >
                     				<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
                     				<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
                     				<columns>
