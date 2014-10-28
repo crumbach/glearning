@@ -6,29 +6,22 @@
   xmlns="sap.m" 
   controllerName="sap.ui.demo.logbook.view.newTrip">
     <Page class="sapUiFioriObjectPage" 
-          title="Add Trip" 
+          title="{i18n>newTripTitle}"
           showNavButton="true"
           navButtonPress="onNavBack">
         <l:Grid defaultSpan="L12 M12 S12" width="auto" hSpacing="2" class="gridMarginTop">
             <l:content>
             <me:Calendar id="selectionCalendar"
-                 selectionMode="SINGLE"
+                 selectionMode="MULTIPLE"
                  tapOnDate="onTapOnDate"
                  changeRange="onChangeRange"/>
-
-            <l:HorizontalLayout>
-                <RadioButton text="Single Selection" select="changeToSingleSelectionMode" groupName="selectionGroup"
-                             selected="true"/>
-                <RadioButton text="Range Selection" select="changeToRangeSelectionMode" groupName="selectionGroup"/>
-                <RadioButton text="Multi Selection" select="changeToMultiSelectionMode" groupName="selectionGroup"/>
-            </l:HorizontalLayout>
             
             <List   id="selectedDatesList"
                     class="labelMarginLeft"
                     noDataText="No Dates Selected"
                     headerText="Selected Dates"
-                    items="{path: '/selectedDates'}">
-                <StandardListItem title="{Date}"/>
+                    items="{/selectedDates}">
+                <StandardListItem title="{datum}"/>
             </List>
             </l:content>
         </l:Grid>

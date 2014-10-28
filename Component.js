@@ -14,11 +14,7 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 		rootView : "sap.ui.demo.logbook.view.App",
 
 		config : {
-			resourceBundle : "i18n/messageBundle.properties",
-			serviceConfig : {
-				name : "Northwind",
-				serviceUrl : ""
-			}
+			resourceBundle : "i18n/messageBundle.properties"
 		},
 
 		routing : {
@@ -95,7 +91,14 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 // 		var oModel = new sap.ui.model.odata.ODataModel(sServiceUrl, true);
 // 		this.setModel(oModel);
         var oModel = new sap.ui.model.json.JSONModel("model/listMaster.json");
+        //sap.ui.getCore().setModel(oModel);
         this.setModel(oModel);
+        
+        // set i18n model
+		var i18nModel = new sap.ui.model.resource.ResourceModel({
+			bundleUrl : "i18n/messageBundle.properties"
+		});
+		this.setModel(i18nModel, "i18n");
 
  		// Attache Request Failed Handler
          oModel.attachRequestFailed(this.oDataErrorHandling); 

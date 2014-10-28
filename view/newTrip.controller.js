@@ -1,8 +1,11 @@
 sap.ui.controller("sap.ui.demo.logbook.view.newTrip", {
 
 	onInit : function() {
-        this.oModel = new sap.ui.model.json.JSONModel({selectedDates: []});
-        this.getView().setModel(this.oModel);
+	    
+		var oView = this.getView();
+		oView.bindElement('/selectedDates');
+        // this.oModel = new sap.ui.model.json.JSONModel({selectedDates: []});
+        // oView.setModel(this.oModel);
 	},
 
 	onNavBack : function(oEvent) {
@@ -17,35 +20,14 @@ sap.ui.controller("sap.ui.demo.logbook.view.newTrip", {
 		sap.ui.core.UIComponent.getRouterFor(this).backWithoutHash(this.getView());
 	},
 
-    changeToSingleSelectionMode: function () {
-        var oCalendar = this.getView().byId("selectionCalendar");
-        this._clearModel();
-        oCalendar.unselectAllDates();
-        oCalendar.setSelectionMode(sap.me.CalendarSelectionMode.SINGLE);
-    },
-
-    changeToRangeSelectionMode: function () {
-        var oCalendar = this.getView().byId("selectionCalendar");
-        this._clearModel();
-        oCalendar.unselectAllDates();
-        oCalendar.setSelectionMode(sap.me.CalendarSelectionMode.RANGE);
-    },
-
-    changeToMultiSelectionMode: function () {
-        var oCalendar = this.getView().byId("selectionCalendar");
-        this._clearModel();
-        oCalendar.unselectAllDates();
-        oCalendar.setSelectionMode(sap.me.CalendarSelectionMode.MULTIPLE);
-    },
-
     onTapOnDate: function (oEvent) {
         sap.m.MessageToast.show("You tapped on " + oEvent.getParameters().date + " didSelect: " + oEvent.getParameters().didSelect);
-        this._updateModel();
+//        this._updateModel();
     },
 
     onChangeRange: function (oEvent) {
         sap.m.MessageToast.show("You selected a range of dates starting on: " + oEvent.getParameters().fromDate + " to: " + oEvent.getParameters().toDate);
-        this._updateModel();
+//        this._updateModel();
     },
 
     _updateModel: function () {
