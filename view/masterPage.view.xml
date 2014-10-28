@@ -48,9 +48,9 @@
             </content> <!-- sap.ui.core.Control -->
     		<customHeader></customHeader> <!-- sap.m.Bar -->
     		<footer>
-    		    <Toolbar>
+    			<Toolbar>
                     <ToolbarSpacer/>
-                    <Button text="New" type="Emphasized" press="onNewTrip"/>
+                    <Button icon="sap-icon://add" tooltip="Log new trip" type="Emphasized" press="onNewTrip"/>
                 </Toolbar>
     		</footer> <!-- sap.m.Bar -->
     		<subHeader></subHeader> <!-- sap.m.Bar -->
