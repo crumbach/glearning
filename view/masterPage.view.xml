@@ -47,7 +47,12 @@
     		    </List>
             </content> <!-- sap.ui.core.Control -->
     		<customHeader></customHeader> <!-- sap.m.Bar -->
-    		<footer></footer> <!-- sap.m.Bar -->
+    		<footer>
+    		    <Toolbar>
+                    <ToolbarSpacer/>
+                    <Button text="New" type="Emphasized" press="onNewTrip"/>
+                </Toolbar>
+    		</footer> <!-- sap.m.Bar -->
     		<subHeader></subHeader> <!-- sap.m.Bar -->
     		<headerContent></headerContent> <!-- sap.ui.core.Control -->
     </Page>
