@@ -20,8 +20,12 @@ sap.ui.controller("sap.ui.demo.logbook.view.masterPage", {
 		var bReplace = jQuery.device.is.phone ? false : true;
 		sap.ui.core.UIComponent.getRouterFor(this).navTo("details", {
 			from: "logbook",
-			year: oItem.getBindingContextPath().substr(10) //skip "/logbooks/"
+			year: oItem.getBindingContextPath().substr(10)
 		}, bReplace);
+	},
+	
+	onNewTrip : function() {
+	    sap.ui.core.routing.Router.getRouter("appRouter").navTo("newTrip");
 	},
 	
 	quitSplitApp : function() {
