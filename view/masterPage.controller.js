@@ -1,11 +1,5 @@
 sap.ui.controller("sap.ui.demo.logbook.view.masterPage", {
 
-/**
-* Called when a controller is instantiated and its View controls (if available) are already created.
-* Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
-* @memberOf sap.ui.demo.logbook.view.masterPage
-*/
-
 	onInit: function() {
 	},
 
@@ -25,7 +19,7 @@ sap.ui.controller("sap.ui.demo.logbook.view.masterPage", {
 	},
 	
 	onNewTrip : function() {
-	    sap.ui.core.routing.Router.getRouter("appRouter").navTo("newTrip");
+	    sap.ui.core.routing.Router.getRouter("appRouter").navTo("newTrip", {}, false);
 	},
 	
 	quitSplitApp : function() {

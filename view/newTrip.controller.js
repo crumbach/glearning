@@ -3,9 +3,6 @@ sap.ui.controller("sap.ui.demo.logbook.view.newTrip", {
 	onInit : function() {
 	    
 		var oView = this.getView();
-		oView.bindElement('/selectedDates');
-        // this.oModel = new sap.ui.model.json.JSONModel({selectedDates: []});
-        // oView.setModel(this.oModel);
 	},
 
 	onNavBack : function(oEvent) {

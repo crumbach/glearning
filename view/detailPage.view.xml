@@ -13,14 +13,8 @@
     	id="detailPage"
     	title="Trips in {year}"
 		showNavButton="{device>/isPhone}"
-    	showHeader="true"
-    	navButtonText=""
-    	enableScrolling="true"
-    	icon=""
-    	navButtonType="Back"
     	showFooter="true"
-    	navButtonTap="onDetailBack"
-    	navButtonPress="onDetailBack"
+    	navButtonPress="onNavBack"
     	>
 		<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->

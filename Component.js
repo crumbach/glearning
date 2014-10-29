@@ -67,12 +67,6 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 		// (relative paths will fail if running in the Fiori Launchpad)
 // 		var rootPath = jQuery.sap.getModulePath("sap.hana.xs.lm.pe.ui");
 
-		// set i18n model
-// 		var i18nModel = new sap.ui.model.resource.ResourceModel({
-// 			bundleUrl : [rootPath, mConfig.resourceBundle].join("/")
-// 		});
-// 		this.setModel(i18nModel, "i18n");
-		
 // 		// set process engine model
 // 		var sServiceUrl = '/sap/hana/xs/lm/pe/public/display/engine.xsodata/';
 
@@ -91,7 +85,6 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 // 		var oModel = new sap.ui.model.odata.ODataModel(sServiceUrl, true);
 // 		this.setModel(oModel);
         var oModel = new sap.ui.model.json.JSONModel("model/listMaster.json");
-        //sap.ui.getCore().setModel(oModel);
         this.setModel(oModel);
         
         // set i18n model
@@ -99,9 +92,6 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 			bundleUrl : "i18n/messageBundle.properties"
 		});
 		this.setModel(i18nModel, "i18n");
-
- 		// Attache Request Failed Handler
-         oModel.attachRequestFailed(this.oDataErrorHandling); 
 
 		// set device model
 		var deviceModel = new sap.ui.model.json.JSONModel({
