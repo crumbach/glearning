@@ -12,13 +12,6 @@
     	title="Trips per Year"
     	showNavButton="true"
     	showHeader="true"
-    	navButtonText=""
-    	enableScrolling="true"
-    	icon=""
-    	backgroundDesign="Standard"
-    	navButtonType="Back"
-    	showFooter="true"
-    	navButtonTap="quitSplitApp"
     	navButtonPress="quitSplitApp">
     		<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
     		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->

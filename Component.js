@@ -37,7 +37,15 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 					name: "splitApp",
 					pattern: "logbook",
 					view: "splitApp",
-					subroutes: [ {
+					subroutes: [ 
+					    {
+							name: "master",
+								pattern: "logbook/app",
+								view: "masterPage",
+								targetControl: "idSplitApp",
+								targetAggregation: "masterPages"
+				            },
+					    {
 							name: "details",
 								pattern: "logbook/{year}",
 								view: "detailPage",

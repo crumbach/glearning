@@ -8,6 +8,7 @@
 	viewName="sap.ui.demo.logbook.view.detailPage"
 	id="detailView"
 	>
+
     <Page xmlns="sap.m"
 		class="sapUiFioriObjectPage"
     	id="detailPage"
@@ -15,7 +16,7 @@
 		showNavButton="{device>/isPhone}"
     	showFooter="true"
     	navButtonPress="onNavBack"
-    	>
+    	>    	
 		<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 		<content>
