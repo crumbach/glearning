@@ -37,7 +37,7 @@ sap.ui.controller("sap.ui.demo.logbook.view.detailPage", {
 	onNavBack : function() {
 		// This is only relevant when running on phone devices
 		var bReplace = true;  // otherwise we go backwards with a forward history
-		sap.ui.core.UIComponent.getRouterFor(this).myNavBack("main", {}, bReplace);
+		sap.ui.core.UIComponent.getRouterFor(this).myNavBack("splitApp", {}, bReplace);
 		                                                                
 	}
 
