@@ -8,6 +8,10 @@ sap.ui.controller("sap.ui.demo.logbook.view.splitApp", {
         oSplitApp.setInitialMaster("masterView");
         oSplitApp.setInitialDetail("detailView");
 
+    },
+    
+    onAfterDetailNavigate : function() {
+     this.byId("idSplitApp").hideMaster(); 
     }
 
 });
