@@ -6,12 +6,14 @@ sap.ui.controller("sap.ui.demo.logbook.view.splitApp", {
         oSplitApp.addMasterPage(new sap.ui.view({id:"masterView", viewName:"sap.ui.demo.logbook.view.masterPage", type:sap.ui.core.mvc.ViewType.XML}));
         oSplitApp.addDetailPage(new sap.ui.view({id:"detailView", viewName:"sap.ui.demo.logbook.view.detailPage", type:sap.ui.core.mvc.ViewType.XML}));
         oSplitApp.setInitialMaster("masterView");
-        oSplitApp.setInitialDetail("detailView");
+        // oSplitApp.setInitialDetail("detailView");
+        
+        // sap.ui.core.UIComponent.getRouterFor(this).navTo("master", {}, false);
 
     },
     
     onAfterDetailNavigate : function() {
-     this.byId("idSplitApp").hideMaster(); 
+     //this.byId("idSplitApp").hideMaster(); 
     }
 
 });

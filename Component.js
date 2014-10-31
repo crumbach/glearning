@@ -9,7 +9,7 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 		dependencies: {
 			libs: ["sap.m", "sap.ui.layout"],
 			components: []
-		},
+		    },
 
 		rootView: "sap.ui.demo.logbook.view.App",
 
@@ -22,8 +22,6 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 				routerClass: sap.ui.demo.logbook.MyRouter,
 				viewType: "XML",
 				viewPath: "sap.ui.demo.logbook.view",
-				targetControl: "logbookApp",
-				targetAggregation: "pages",
 				clearTarget: false,
 				transition: "slide"
 			},
@@ -31,33 +29,31 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 				{
 					name: "tiles",
 					pattern: "",
-					view: "tiles"
+					view: "tiles",
+    				targetControl: "logbookApp",
+	    			targetAggregation: "pages"
 				},
 				{
 					name: "splitApp",
 					pattern: "logbook",
 					view: "splitApp",
-					subroutes: [ 
-					    {
-							name: "master",
-								pattern: "logbook/app",
-								view: "masterPage",
-								targetControl: "idSplitApp",
-								targetAggregation: "masterPages"
-				            },
-					    {
-							name: "details",
-								pattern: "logbook/{year}",
-								view: "detailPage",
-								targetControl: "idSplitApp",
-								targetAggregation: "detailPages"
-				            }
-				        ]
+				    targetControl: "logbookApp",
+				    targetAggregation: "pages",
+					subroutes: [   {
+            							name: "details",
+        								pattern: "logbook/{year}",
+        								view: "detailPage",
+        								targetControl: "idSplitApp",
+        								targetAggregation: "detailPages"
+        				            }
+            				    ]
 			    },
 				{
 					name: "newTrip",
 					pattern: "newtrip",
-					view: "newTrip"
+					view: "newTrip",
+    				targetControl: "logbookApp",
+	    			targetAggregation: "pages"
 				}
 			]
 		}
