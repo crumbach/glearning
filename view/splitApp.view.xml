@@ -5,7 +5,7 @@
 	xmlns="sap.m">
 	<SplitApp 
 	    id="idSplitApp" 
-		mode="ShowHideMode">
+		mode="ShowHideMode" >
 		<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 		<masterPages>

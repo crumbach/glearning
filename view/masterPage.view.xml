@@ -24,10 +24,12 @@
     		<content>			    
     		    <List xmlns="sap.m"
     		    	id="logbookList"
+    		    	mode="SingleSelectMaster"
                     items="{/logbooks}"
     		    	noDataText="no data available"
-    		    	showNoData="true"
-    		    	select="onSelect" >
+    		    	showNoData="true" 
+    		    	select="onSelect" 
+    		    	>
 		    		<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
 		    		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 		    		<swipeContent></swipeContent> <!-- sap.ui.core.Control -->
@@ -56,3 +58,4 @@
     		<headerContent></headerContent> <!-- sap.ui.core.Control -->
     </Page>
 </core:View>
+
