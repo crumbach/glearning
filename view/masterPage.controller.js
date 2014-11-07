@@ -17,11 +17,10 @@ sap.ui.controller("sap.ui.demo.logbook.view.masterPage", {
 	
 	showDetail: function(oItem) {
 		// If we're on a phone, include nav in history; if not, don't.
-		var bReplace = jQuery.device.is.phone ? false : true;
 		sap.ui.core.UIComponent.getRouterFor(this).navTo("details", {
-			from: "logbook",
+			from: "splitApp",
 			year: oItem.getBindingContextPath().substr(10)
-		}, bReplace);
+		}, true);
 	},
 	
 	onNewTrip : function() {
