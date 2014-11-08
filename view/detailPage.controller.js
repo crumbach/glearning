@@ -1,23 +1,19 @@
 sap.ui.controller("sap.ui.demo.logbook.view.detailPage", {
 
+	getEventBus : function () {
+		return this.getOwnerComponent().getEventBus();
+	},
+
+	getRouter : function () {
+		return sap.ui.core.UIComponent.getRouterFor(this);
+	},
+
 /**
 * Called when a controller is instantiated and its View controls (if available) are already created.
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 * @memberOf sap.ui.demo.logbook.view.detailPage
 */
 	onInit: function() {
-		this.oInitialLoadFinishedDeferred = jQuery.Deferred();
-
-		if(sap.ui.Device.system.phone) {
-			//don't wait for the master on a phone
-			this.oInitialLoadFinishedDeferred.resolve();
-// 		} else {
-// 			this.getView().setBusy(true);
-// 			this.getEventBus().subscribe("masterPage", "InitialLoadFinished", this.onMasterLoaded, this);
-		}
-
-		sap.ui.core.routing.Router.getRouter("appRouter").attachRoutePatternMatched(this.onRouteMatched, this);
-		
 		var sPath = this.buildPath("0");
 		var oView = this.getView();
 		oView.bindElement(sPath);
@@ -26,12 +22,18 @@ sap.ui.controller("sap.ui.demo.logbook.view.detailPage", {
         oTable.bindContext(sPath + "/trips");
 		oTable.bindElement(sPath);
 
-		sap.ui.core.UIComponent.getRouterFor(this).attachRouteMatched(function(oEvent) {
-			// when detail navigation occurs, update the binding context
-			if (oEvent.getParameter("name") === "details") {
-                this.bindView(this.buildPath(oEvent.getParameter("arguments").year));
-			}
-		}, this);
+		this.oInitialLoadFinishedDeferred = jQuery.Deferred();
+
+		if(sap.ui.Device.system.phone) {
+			//don't wait for the master on a phone
+			this.oInitialLoadFinishedDeferred.resolve();
+ 		} else {
+ 			this.getView().setBusy(true);
+ 			this.getEventBus().subscribe("Master", "InitialLoadFinished", this.onMasterLoaded, this);
+		}
+
+		sap.ui.core.routing.Router.getRouter("appRouter").attachRoutePatternMatched(this.onRouteMatched, this);
+		
 	},
 
 	onMasterLoaded :  function (sChannel, sEvent, oData) {
@@ -43,12 +45,12 @@ sap.ui.controller("sap.ui.demo.logbook.view.detailPage", {
     onRouteMatched : function(oEvent) {
 		var oParameters = oEvent.getParameters();
 
-//		jQuery.when(this.oInitialLoadFinishedDeferred).then(jQuery.proxy(function () {
+		jQuery.when(this.oInitialLoadFinishedDeferred).then(jQuery.proxy(function () {
 			// when detail navigation occurs, update the binding context
 			if (oParameters.name === "details") { 
     			this.bindView(this.buildPath(oEvent.getParameter("arguments").year));
 			}
-//		}, this));
+		}, this));
 
 	},
 	
@@ -76,18 +78,30 @@ sap.ui.controller("sap.ui.demo.logbook.view.detailPage", {
 					this.fireDetailChanged(sPath);
 				}
 			}, this));
-// 		} else {
-// 			this.fireDetailChanged(sPath);
+ 		} else {
+ 			this.fireDetailChanged(sPath);
 		}
 	},
 	
-// 	fireDetailChanged : function (sPath) {
-// 		this.getEventBus().publish("Detail", "Changed", { sPath : sPath });
-// 	},
+ 	fireDetailChanged : function (sPath) {
+ 		this.getEventBus().publish("Detail", "Changed", { sPath : sPath });
+ 	},
+
+	fireDetailNotFound : function () {
+		this.getEventBus().publish("Detail", "NotFound");
+	},
+
+	onDetailSelect : function(oEvent) {
+	    console.log("onDetailSelect: " + oEvent.getSource().getBindingContext().getPath().slice(1));
+	    
+		sap.ui.core.UIComponent.getRouterFor(this).navTo("details",{
+			year : oEvent.getSource().getBindingContext().getPath().slice(1)
+		}, true);
+	},
 
 	onNavBack : function() {
 		// This is only relevant when running on phone devices
-		sap.ui.core.UIComponent.getRouterFor(this).myNavBack("main");
+		sap.ui.core.UIComponent.getRouterFor(this).myNavBack("splitApp");
 	}
 
 	

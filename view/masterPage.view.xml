@@ -24,21 +24,15 @@
     		<content>			    
     		    <List xmlns="sap.m"
     		    	id="logbookList"
-    		    	mode="SingleSelectMaster"
+                    mode="{device>/listMode}"
                     items="{/logbooks}"
     		    	noDataText="no data available"
     		    	showNoData="true" 
     		    	select="onSelect" 
-    		    	>
-		    		<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
-		    		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
-		    		<swipeContent></swipeContent> <!-- sap.ui.core.Control -->
-		    		<headerToolbar></headerToolbar> <!-- sap.m.Toolbar, since 1.16 -->
-		    		<infoToolbar></infoToolbar> <!-- sap.m.Toolbar, since 1.16 -->
-		    		<columns></columns> <!-- sap.m.Column -->
+		    	  >
     				<items>
     					<ObjectListItem
-    						type="Active"
+    						type="{device>/listItemType}"
     						press="onSelect"
     						title="Trips in {year}"
     						number="{number}"

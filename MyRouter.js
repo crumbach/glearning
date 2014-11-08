@@ -12,7 +12,7 @@ sap.ui.core.routing.Router.extend("sap.ui.demo.logbook.MyRouter", {
         this.register("appRouter");
 	},
 
-	myNavBack : function(sRoute, mData, bReplace) {
+	myNavBack : function(sRoute, mData) {
 	    /**
 	     * navigates back if there was a previos navigation,
 	     * if not, navigation back to home/welcome screen
@@ -22,10 +22,11 @@ sap.ui.core.routing.Router.extend("sap.ui.demo.logbook.MyRouter", {
 
 		//The history contains a previous entry
 		if (sPreviousHash !== undefined) {
-			window.history.go(-1);
+ 			window.history.go(-1);
 		} else {
+    		var bReplace = jQuery.device.is.phone ? false : true;
 			this.navTo(sRoute, mData, bReplace);
-//			this.navTo(sRoute, mData, true);			
+// 			this.navTo(sRoute, mData, true);
 		}
 	
 	},
@@ -63,7 +64,7 @@ sap.ui.core.routing.Router.extend("sap.ui.demo.logbook.MyRouter", {
 	},
 
 	_findSplitApp : function(oControl) {
-		var sAncestorControlName = "idAppControl";
+        var sAncestorControlName = "idSplitApp";
 
 		if (oControl instanceof sap.ui.core.mvc.View && oControl.byId(sAncestorControlName)) {
 			return oControl.byId(sAncestorControlName);
