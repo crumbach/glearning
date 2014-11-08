@@ -23,8 +23,8 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 				viewPath : "sap.ui.demo.logbook.view",
 				targetControl : "logbookApp", 
 				targetAggregation : "pages",
-				clearTarget : false,
-				transition : "slide"
+				transition: "slide",
+				clearTarget : false
 			},
 			routes : [
 				{
@@ -36,12 +36,22 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 				    name : "splitApp",
 				    pattern : "logbook",
 				    view : "splitApp",
-				    subroutes : [ {
+				    subroutes : [ 
+				        {
+				            name : "master",
+				            pattern : "logbook/",
+				            view : "masterPage",
+            				targetControl : "idSplitApp", 
+            				targetAggregation : "masterPages",
+            				transition: "show"
+				        },
+				        {
 				            name : "details",
 				            pattern : "logbook/{year}",
 				            view : "detailPage",
             				targetControl : "idSplitApp", 
-            				targetAggregation : "detailPages"
+            				targetAggregation : "detailPages",
+            				transition: "show"
 				        }
 				    ]
 			    },
@@ -49,7 +59,21 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.logbook.Component", {
 				    name : "newTrip",
 				    pattern : "newtrip",
 				    view : "newTrip"
+				},
+				{
+					name : "catchallMaster",
+				    pattern : "logbook",
+					view : "splitApp",
+					subroutes : [
+						{
+							pattern : ":all*:",
+							name : "catchallDetail",
+							view : "NotFound",
+							transition : "slide"
+						}
+					]
 				}
+
 			]
 		}
 	},
