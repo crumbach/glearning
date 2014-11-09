@@ -13,24 +13,24 @@
 			<StandardTile xmlns="sap.m" 
 			    id="tileTripOverview"
 				removable="false" 
-				title="Trips in 2014" 
-				info="Click to view the complete logbook"
+				title="{i18n>logbookTitle}" 
+				info="{i18n>logbookTileDescr}"
 				icon="sap-icon://activity-items" 
 				activeIcon="" 
 				number="32"
-				numberUnit="Trips" 
+				numberUnit="{i18n>Unit}" 
 				infoState="None" 
 				type="None" 
 				iconDensityAware="true"
 				press="onPressTile">
-				<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
+				<tooltip text="{i18n>logbookTileDescr}" /> <!-- sap.ui.core.TooltipBase -->
 				<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 			</StandardTile>
 			<StandardTile xmlns="sap.m" 
 			    id="tileLogTrip" 
 			    removable="false"
-				title="Log new trip" 
-				info="Click to log a new trip" 
+				title="{i18n>newTripTitle}" 
+				info="{i18n>newTripTileDescr}" 
 				icon=""
 				activeIcon="" 
 				number="" 
@@ -39,7 +39,7 @@
 				type="Create"
 				iconDensityAware="true" 
 				press="onPressTile">
-				<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
+				<tooltip text="{i18n>newTripTileDescr" /> <!-- sap.ui.core.TooltipBase -->
 				<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 			</StandardTile>
 		</tiles> <!-- sap.ui.core.Control -->
