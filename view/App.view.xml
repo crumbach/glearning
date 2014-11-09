@@ -5,8 +5,6 @@
 	xmlns="sap.m">
 	<App id="logbookApp" >
 		<pages>
-    	  <!--<mvc:XMLView id="tiles" viewName="sap.ui.demo.logbook.view.tiles" />-->
-    	  <!--<mvc:XMLView id="overview" viewName="sap.ui.demo.logbook.view.overview" />-->
 		</pages> <!-- sap.ui.core.Control -->
-	  	</App>
+  	</App>
 </mvc:View>
