@@ -1,9 +1,16 @@
 sap.ui.controller("sap.ui.demo.logbook.view.newTrip", {
 
 	onInit : function() {
-	    
-		var oView = this.getView();
+        sap.ui.core.UIComponent.getRouterFor(this).attachRouteMatched(this.onRouteMatched, this);	    
 	},
+	
+	onRouteMatched : function(oEvent) {
+        var oParameters = oEvent.getParameters();
+        // when detail navigation occurs, update the binding context
+        // if (oParameters.name !== "services") {
+        //     return;
+        // }
+    },
 
 	onNavBack : function(oEvent) {
 	    sap.ui.core.routing.Router.getRouter("appRouter").myNavBack("tiles", { from : "newTrip"}, false);

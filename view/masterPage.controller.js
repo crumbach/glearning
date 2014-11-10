@@ -1,7 +1,16 @@
 sap.ui.controller("sap.ui.demo.logbook.view.masterPage", {
 
 	onInit: function() {
+	    sap.ui.core.UIComponent.getRouterFor(this).attachRouteMatched(this.onRouteMatched, this);
 	},
+	
+    onRouteMatched : function(oEvent) {
+        var oParameters = oEvent.getParameters();
+        // when detail navigation occurs, update the binding context
+        // if (oParameters.name !== "services") {
+        //     return;
+        // }
+    },	
 
 	onSelect: function(oEvent) {
 		// Get the list item, either from the listItem parameter or from the event's

@@ -1,5 +1,9 @@
 sap.ui.controller("sap.ui.demo.logbook.view.tiles", {
 
+    onInit : function() {
+        sap.ui.core.UIComponent.getRouterFor(this).attachRouteMatched(this.onRouteMatched, this);
+    },
+
     onPressTile : function(oEvent) {
         var oTileName = oEvent.getSource().getId();
 
@@ -10,6 +14,14 @@ sap.ui.controller("sap.ui.demo.logbook.view.tiles", {
         } else {
             sap.m.MessageToast("No route maintained for " + oTileName);
         }
+    },
+    
+    onRouteMatched : function(oEvent) {
+        var oParameters = oEvent.getParameters();
+        // when detail navigation occurs, update the binding context
+        // if (oParameters.name !== "services") {
+        //     return;
+        // }
     }
 
 
