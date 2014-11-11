@@ -1,64 +1,90 @@
 sap.ui.controller("sap.ui.demo.logbook.view.newTrip", {
+    // dates selected on the calendar are stored on the model as "selectedDates"
+    // only upon save, these are moved to the actual logbook 
+    
+// 	onInit : function() {
+// 	},
 
-	onInit : function() {
-	    
-		var oView = this.getView();
-		oView.bindElement('/selectedDates');
-        // this.oModel = new sap.ui.model.json.JSONModel({selectedDates: []});
-        // oView.setModel(this.oModel);
-	},
-
-	onNavBack : function(oEvent) {
-	    sap.ui.core.routing.Router.getRouter("appRouter").myNavBack("tiles", { from : "newTrip"}, false);
+	onNavBack : function() {
+        this.cancelTrip();
 	},
 	
 	onSave : function() {
+	    // get base model
+        sap.m.MessageToast.show("Saving data");
+	    var oModel = this.getView().getModel();
+	    var oData = oModel.getData("selectedDates");
+        var aSelectedDates = oData.selectedDates;
 
-	},
+        // get selected dates on calendar        
+        var oCalendar = this.getView().byId("selectionCalendar");
+        var aCalendarDates = oCalendar.getSelectedDates();
+        if (aCalendarDates.length > 0) {
+            // extend base dates with calendar dates
+            for (var i = 0; i < aCalendarDates.length; i++) {
+                aSelectedDates.push({"datum": aCalendarDates[i] });
+            }
+            // replace selected dates in base model
+            oModel.setData({"selectedDates": aSelectedDates}, true );
+        }
+        
+        // finally navigate to splitApp
+        this._clearModel();
+        sap.ui.core.routing.Router.getRouter("appRouter").navTo("splitApp", { from: "newTrip" } );
+    },
 
 	onCancel : function() {
-		sap.ui.core.UIComponent.getRouterFor(this).backWithoutHash(this.getView());
+	    this.cancelTrip();
+	},
+	
+	cancelTrip : function() {
+        sap.m.MessageToast.show("Logging canceled");
+        this._clearModel();
+		sap.ui.core.UIComponent.getRouterFor(this).myNavBack("tiles");
 	},
 
     onTapOnDate: function (oEvent) {
         sap.m.MessageToast.show("You tapped on " + oEvent.getParameters().date + " didSelect: " + oEvent.getParameters().didSelect);
-//        this._updateModel();
+        // add or remove? oEvent.getParameters().didSelect
+        this._updateModel(oEvent.getParameters());
     },
-
-    onChangeRange: function (oEvent) {
-        sap.m.MessageToast.show("You selected a range of dates starting on: " + oEvent.getParameters().fromDate + " to: " + oEvent.getParameters().toDate);
-//        this._updateModel();
-    },
-
-    _updateModel: function () {
+    
+	_clearModel : function() {
+	    // start with an empty calendar
         var oCalendar = this.getView().byId("selectionCalendar");
-        var aSelectedDates = oCalendar.getSelectedDates();
-        var strDate;
-        var oData = {selectedDates: []};
-        if (aSelectedDates.length > 0) {
-            for (var i = 0; i < aSelectedDates.length; i++) {
-                strDate = aSelectedDates[i];
-                oData.selectedDates.push({Date: strDate });
-                // Because of potential issues due to DST and the time in the night at which the change happens,
-                // the recommended way to instantiate a Date object is:
-                // var oDate = sap.me.Calendar.parseDate(strDate);
-                // Do not rely on anything lower than the day unit in this Date object.
-                // Hours, minutes, seconds, milliseconds must not be taken into account.
+        oCalendar.unselectAllDates();
 
-                // Since you are reading this, the explanation why the hours must not be taken into account.
-                // Change your computer's time zone to Brasilia (UTC-3)
-                // Open your favorite browser and create a Date object for October 19th, 2014:
-                // var oTheDayBefore = new Date(2014, 9, 19);
-                // Display 'oTheDayBefore'.
-            }
-            this.oModel.setData(oData);
-        } else {
-            this._clearModel();
+        // This does not work as it either merges in selectedDates (no effect)
+        // or replaces, but then logbooks are lost
+        var oModel = this.getView().getModel();
+        var aSelectedDates = oModel.getData().selectedDates;
+        while (aSelectedDates.length > 0) {
+            aSelectedDates.splice(0, 1); // delete all, so simply delete first one always
         }
-    },
+        oModel.setData({"selectedDates": aSelectedDates}, true );
+	},
 
-    _clearModel: function () {
-        this.oModel.setData({selectedDates: []});
-    }	
+    _updateModel: function (evtParameters) {
+	    // get base model
+	    var oModel = this.getView().getModel();
+        var aSelectedDates = oModel.getData().selectedDates;
+        if (!aSelectedDates) {
+            aSelectedDates = new Array();
+        }
 
-});
+        // extend base dates with calendar dates
+        if (evtParameters.didSelect === true) {
+            aSelectedDates.push({"datum": evtParameters.date });
+        } else {
+            for (var j = 0; j < aSelectedDates.length; j++) {
+                if (aSelectedDates[j].datum === evtParameters.date) {
+                    aSelectedDates.splice(j, 1);
+                }
+            }
+        }
+
+        // replace selected dates in base model
+        oModel.setData({"selectedDates": aSelectedDates}, true );
+        }
+    }
+);

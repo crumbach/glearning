@@ -14,7 +14,7 @@
             <me:Calendar id="selectionCalendar"
                  selectionMode="MULTIPLE"
                  tapOnDate="onTapOnDate"
-                 changeRange="onChangeRange"/>
+                 />
             
             <List   id="selectedDatesList"
                     class="labelMarginLeft"

@@ -110,7 +110,8 @@ sap.ui.controller("sap.ui.demo.logbook.view.masterPage", {
 	},
 	
 	quitSplitApp : function() {
-	    this.router.myNavBack("tiles");
+        sap.ui.core.routing.Router.getRouter("appRouter").navTo("tiles", { from: "splitApp" } );
+	   // this.router.myNavBack("tiles");
 	}
 	
 });
