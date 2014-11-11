@@ -2,14 +2,14 @@
     "logbooks" : [ {
 			"year" : "2014",
 			"number"  : "32",
-			"trips" : [ { "datum":"01.10.2014" }, {"datum":"15.10.2014"} ]
+			"trips" : [ { "datum":"Wed Oct 01 2014" }, {"datum":"Wed Oct 15 2014"} ]
 		}, {
 			"year" : "2013",
 			"number"  : "56",
-			"trips" : [ { "datum":"01.10.2013" }, {"datum":"01.10.2013"} ]
+			"trips" : [ { "datum":"Tue Oct 01 2013" }, {"datum":"Wed Oct 02 2013"} ]
 		}, {
 			"year" : "2012",
 			"number"  : "48",
-			"trips" : [ { "datum":"01.10.2012" }, {"datum":"01.10.2012"} ]
+			"trips" : [ { "datum":"Wed Oct 03 2012" }, {"datum":"Mon Oct 01 2012"} ]
 		} ]
 }

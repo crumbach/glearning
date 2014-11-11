@@ -10,8 +10,9 @@ sap.ui.controller("sap.ui.demo.logbook.view.newTrip", {
 	},
 	
 	onSave : function() {
-	    // get base model
         sap.m.MessageToast.show("Saving data");
+
+	    // get base model
 	    var oModel = this.getView().getModel();
 	    var oData = oModel.getData("selectedDates");
         var aSelectedDates = oData.selectedDates;
@@ -22,10 +23,12 @@ sap.ui.controller("sap.ui.demo.logbook.view.newTrip", {
         if (aCalendarDates.length > 0) {
             // extend base dates with calendar dates
             for (var i = 0; i < aCalendarDates.length; i++) {
-                aSelectedDates.push({"datum": aCalendarDates[i] });
+                var logbook = this.getLogbook(oData.logbooks, aCalendarDates[i].substr(aCalendarDates[i].length - 4));
+                logbook.trips.push({"datum": aCalendarDates[i] });
             }
             // replace selected dates in base model
-            oModel.setData({"selectedDates": aSelectedDates}, true );
+            // oModel.setData({"selectedDates": aSelectedDates}, true );
+            oModel.setData({"logbooks": oData.logbooks}, true);
         }
         
         // finally navigate to splitApp
@@ -33,6 +36,22 @@ sap.ui.controller("sap.ui.demo.logbook.view.newTrip", {
         sap.ui.core.routing.Router.getRouter("appRouter").navTo("splitApp", { from: "newTrip" } );
     },
 
+    getLogbook : function(logbooks, year) {
+    	// Does the logbook exist for this year?
+        for (var i = 0; i < logbooks.length; i++) {
+            if (year === logbooks[i].year) {
+                return logbooks[i];
+            }
+        }
+		// We have to create a new logbooks
+		logbooks.push({
+			"year" : year,
+			"number"  : "1",
+			"trips" : []
+		});
+		return logbooks[logbooks.length - 1];
+    },
+    
 	onCancel : function() {
 	    this.cancelTrip();
 	},
