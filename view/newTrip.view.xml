@@ -3,33 +3,52 @@
   xmlns:l="sap.ui.layout" 
   xmlns:u="sap.ui.unified"
   xmlns="sap.m" 
+  xmlns:html="http://www.w3.org/1999/xhtml" 
   class="viewPadding"
   controllerName="sap.ui.demo.logbook.view.newTrip">
     <Page title="{i18n>newTripTitle}"
           showNavButton="true"
           navButtonPress="onNavBack">
 		<content>
-            <FlexBox xmlns="sap.m"
-            	id="id"
+          <FlexBox xmlns="sap.m"
+            	id="idFlexBox"
             	visible="true"
             	direction="Column"
             	justifyContent="SpaceBetween"
             	alignItems="Center">
-        		<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
-        		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
-        		<items>
+            <items>
+                <html:div style="max-width: 480px; background: white">
+                <l:VerticalLayout>
                     <u:Calendar id="calendar" 
                                 select="calendarSelect" 
                                 intervalSelection="false" 
-                                singleSelection="false"/>
+                                singleSelection="false"
+                                >
+                        <u:layoutData>
+                            <l:ResponsiveFlowLayoutData minWidth="320"
+                                weight="2" margin="false" linebreakable="false">
+                            </l:ResponsiveFlowLayoutData>
+                        </u:layoutData>
+                    </u:Calendar>
+                    <u:CalendarLegend id="idLegend">
+                      <u:layoutData>
+                        <l:ResponsiveFlowLayoutData minWidth="150" weight="1"
+                          margin="false">
+                        </l:ResponsiveFlowLayoutData>
+                      </u:layoutData>
+                    </u:CalendarLegend>
+                </l:VerticalLayout>
+                </html:div>
                     <List   id="selectedDatesList"
-                            class="labelMarginLeft"
-                            noDataText="No Dates Selected"
-                            headerText="Selected Dates"
-                            items="{/selectedDates}">
-                        <StandardListItem title="{datum}"/>
-                    </List>
-        		</items> <!-- sap.ui.core.Control -->
+                                class="labelMarginLeft"
+                                noDataText="No Dates Selected"
+                                headerText="Documenting trips on (YYYY-MM-DD)"
+                                items="{/selectedDates}"
+                                visible="true"
+                                >
+                            <StandardListItem title="{datum}"/>
+                        </List>
+            </items>
             </FlexBox>
         </content> <!-- sap.ui.core.Control -->
         <footer>
