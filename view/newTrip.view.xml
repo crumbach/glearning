@@ -1,30 +1,37 @@
 <mvc:View 
-  xmlns:core="sap.ui.core" 
   xmlns:mvc="sap.ui.core.mvc"
   xmlns:l="sap.ui.layout" 
-  xmlns:me="sap.me"
   xmlns:u="sap.ui.unified"
   xmlns="sap.m" 
+  class="viewPadding"
   controllerName="sap.ui.demo.logbook.view.newTrip">
-    <Page class="sapUiFioriObjectPage" 
-          title="{i18n>newTripTitle}"
+    <Page title="{i18n>newTripTitle}"
           showNavButton="true"
           navButtonPress="onNavBack">
-        <l:Grid defaultSpan="L12 M12 S12" width="auto" hSpacing="2" class="gridMarginTop">
-            <l:content>
-                <u:Calendar id="calendar" 
-                    select="calendarSelect" 
-                    intervalSelection="false" 
-                    singleSelection="false"/>
-                <List   id="selectedDatesList"
-                        class="labelMarginLeft"
-                        noDataText="No Dates Selected"
-                        headerText="Selected Dates"
-                        items="{/selectedDates}">
-                    <StandardListItem title="{datum}"/>
-                </List>
-            </l:content>
-        </l:Grid>
+		<content>
+            <FlexBox xmlns="sap.m"
+            	id="id"
+            	visible="true"
+            	direction="Column"
+            	justifyContent="SpaceBetween"
+            	alignItems="Center">
+        		<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
+        		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
+        		<items>
+                    <u:Calendar id="calendar" 
+                                select="calendarSelect" 
+                                intervalSelection="false" 
+                                singleSelection="false"/>
+                    <List   id="selectedDatesList"
+                            class="labelMarginLeft"
+                            noDataText="No Dates Selected"
+                            headerText="Selected Dates"
+                            items="{/selectedDates}">
+                        <StandardListItem title="{datum}"/>
+                    </List>
+        		</items> <!-- sap.ui.core.Control -->
+            </FlexBox>
+        </content> <!-- sap.ui.core.Control -->
         <footer>
             <Toolbar>
                 <ToolbarSpacer/>

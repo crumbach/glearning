@@ -1,12 +1,31 @@
 sap.ui.controller("sap.ui.demo.logbook.view.newTrip", {
     // dates selected on the calendar are stored on the model as "selectedDates"
     // only upon save, these are moved to the actual logbook 
+
+    // onInit : function() {
+    //     this.initCalendar();
+    // },
     
-	onInit : function() {
+	onBeforeRendering : function() {
+	    this.initCalendar();
+	},
+	
+	initCalendar : function() {
 	    var oModel = this.getView().getModel("baseModel");
 	    if (!oModel) {
     	    oModel = sap.ui.getCore().getModel("baseModel");
 	    }
+	    console.log("newTrip--onInit/model: " + oModel);
+
+        var oCalendar = this.getView().byId("calendar");
+        oCalendar.removeAllSelectedDates();
+
+        // // oCalendar.addSpecialDate({ "datum": Date.now() });
+        
+        oCalendar.addSpecialDate(new sap.ui.unified.DateTypeRange({
+            type:      sap.ui.unified.CalendarDayType.Type01,
+            startDate: new Date()
+        }));
 	},
 
 	onNavBack : function() {
