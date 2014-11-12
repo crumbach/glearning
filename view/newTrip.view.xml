@@ -3,6 +3,7 @@
   xmlns:mvc="sap.ui.core.mvc"
   xmlns:l="sap.ui.layout" 
   xmlns:me="sap.me"
+  xmlns:u="sap.ui.unified"
   xmlns="sap.m" 
   controllerName="sap.ui.demo.logbook.view.newTrip">
     <Page class="sapUiFioriObjectPage" 
@@ -11,18 +12,17 @@
           navButtonPress="onNavBack">
         <l:Grid defaultSpan="L12 M12 S12" width="auto" hSpacing="2" class="gridMarginTop">
             <l:content>
-            <me:Calendar id="selectionCalendar"
-                 selectionMode="MULTIPLE"
-                 tapOnDate="onTapOnDate"
-                 />
-            
-            <List   id="selectedDatesList"
-                    class="labelMarginLeft"
-                    noDataText="No Dates Selected"
-                    headerText="Selected Dates"
-                    items="{/selectedDates}">
-                <StandardListItem title="{datum}"/>
-            </List>
+                <u:Calendar id="calendar" 
+                    select="calendarSelect" 
+                    intervalSelection="false" 
+                    singleSelection="false"/>
+                <List   id="selectedDatesList"
+                        class="labelMarginLeft"
+                        noDataText="No Dates Selected"
+                        headerText="Selected Dates"
+                        items="{/selectedDates}">
+                    <StandardListItem title="{datum}"/>
+                </List>
             </l:content>
         </l:Grid>
         <footer>
